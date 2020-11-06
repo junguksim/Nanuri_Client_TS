@@ -1,13 +1,21 @@
+import { Picture } from "../classes/Picture.class"
+
 export interface ItemProps {
-    itemIdx : number,
-    pic: {
-        uri : string,
-        width : number,
-        height : number
+    userInfo : {
+        userIdx : number,
+        userName : string,
+        userImg : Picture,
+        address : string
     },
-    title: string,
-    address: string,
-    uploadTime: string,
-    price: number,
-    description :string
+    itemInfo : {
+        itemIdx : number,
+        thumbnail : Picture,
+        itemPictures : Array<Picture>,
+        title: string,
+        uploadTime: string,
+        price: number,
+        description :string,
+        people : number,
+        maxPeople : number
+    }
 }

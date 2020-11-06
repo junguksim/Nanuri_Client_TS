@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Item from './Item.components';
 import { ItemProps } from '../interfaces/Item.interface';
+import { Picture } from '../classes/Picture.class';
 
 const pic = {
   uri:
@@ -18,20 +19,13 @@ const pic = {
 };
 const DummyData = [
   {
-    itemIdx: 1,
-    title: '샤워볼 개당 2천원에 공구하실분~',
-    pic,
-    address: '중랑구 신내2동',
-    uploadTime: '방금 전',
-    price: 15000,
-  },
-  {
     itemIdx: 2,
     title: '샤워볼 개당 2천원에 공구하실분~',
     pic,
     address: '중랑구 신내2동',
     uploadTime: '방금 전',
     price: 15000,
+    description: 'hi',
   },
   {
     itemIdx: 3,
@@ -40,6 +34,7 @@ const DummyData = [
     address: '중랑구 신내2동',
     uploadTime: '방금 전',
     price: 15000,
+    description: 'hi',
   },
   {
     itemIdx: 4,
@@ -48,6 +43,7 @@ const DummyData = [
     address: '중랑구 신내2동',
     uploadTime: '방금 전',
     price: 15000,
+    description: 'hi',
   },
 ];
 const GroupBuying: React.FC<ItemProps> = (props) => {

@@ -12,12 +12,23 @@ import {
 import { ItemProps } from '../interfaces/Item.interface';
 
 const Item: React.FC<ItemProps> = (props) => {
-  let { pic, title, address, uploadTime, price, description } = props;
-  const [isClicked, setClicked] = useState(false);
-
+  let {
+    userInfo: { userImg, userIdx, userName, address },
+    itemInfo: {
+      itemIdx,
+      itemPictures,
+      thumbnail,
+      title,
+      uploadTime,
+      price,
+      description,
+      people,
+      maxPeople,
+    },
+  } = props;
   return (
     <View style={styles.item}>
-      <Image source={pic} style={styles.picture}></Image>
+      <Image source={thumbnail} style={styles.picture}></Image>
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.address}>
