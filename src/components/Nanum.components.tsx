@@ -44,11 +44,126 @@ const DummyData = [
         new Picture(2, showerball, 100, 100),
         new Picture(3, macbook, 100, 100),
       ],
-      title: '샤워볼 개당 2천원에 나눔합니다. 맥북도 팝니다',
+      title: '샤워볼 개당 2천원에 나눔합니다',
       uploadTime: '방금 전',
       price: 15000,
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae laborum dolor, animi nobis molestias nulla ullam ipsam eos, deserunt enim ratione, obcaecati consectetur maxime at. Iure aliquid non itaque? Esse.',
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
+      people: 1,
+      maxPeople: 6,
+    },
+  },
+  {
+    userInfo: {
+      userIdx: 1,
+      userName: '심정욱',
+      userImg: new Picture(1, man, 30, 30),
+      address: '중랑구 신내2동',
+    },
+    itemInfo: {
+      itemIdx: 2,
+      thumbnail: new Picture(2, showerball, 100, 100),
+      itemPictures: [
+        new Picture(2, showerball, 100, 100),
+        new Picture(3, macbook, 100, 100),
+      ],
+      title: '샤워볼 개당 2천원에 나눔합니다',
+      uploadTime: '방금 전',
+      price: 15000,
+      description:
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
+      people: 1,
+      maxPeople: 6,
+    },
+  },
+  {
+    userInfo: {
+      userIdx: 1,
+      userName: '심정욱',
+      userImg: new Picture(1, man, 30, 30),
+      address: '중랑구 신내2동',
+    },
+    itemInfo: {
+      itemIdx: 3,
+      thumbnail: new Picture(2, showerball, 100, 100),
+      itemPictures: [
+        new Picture(2, showerball, 100, 100),
+        new Picture(3, macbook, 100, 100),
+      ],
+      title: '샤워볼 개당 2천원에 나눔합니다',
+      uploadTime: '방금 전',
+      price: 15000,
+      description:
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
+      people: 1,
+      maxPeople: 6,
+    },
+  },
+  {
+    userInfo: {
+      userIdx: 1,
+      userName: '심정욱',
+      userImg: new Picture(1, man, 30, 30),
+      address: '중랑구 신내2동',
+    },
+    itemInfo: {
+      itemIdx: 4,
+      thumbnail: new Picture(2, showerball, 100, 100),
+      itemPictures: [
+        new Picture(2, showerball, 100, 100),
+        new Picture(3, macbook, 100, 100),
+      ],
+      title: '샤워볼 개당 2천원에 나눔합니다',
+      uploadTime: '방금 전',
+      price: 15000,
+      description:
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
+      people: 1,
+      maxPeople: 6,
+    },
+  },
+  {
+    userInfo: {
+      userIdx: 1,
+      userName: '심정욱',
+      userImg: new Picture(1, man, 30, 30),
+      address: '중랑구 신내2동',
+    },
+    itemInfo: {
+      itemIdx: 5,
+      thumbnail: new Picture(2, showerball, 100, 100),
+      itemPictures: [
+        new Picture(2, showerball, 100, 100),
+        new Picture(3, macbook, 100, 100),
+      ],
+      title: '샤워볼 개당 2천원에 나눔합니다',
+      uploadTime: '방금 전',
+      price: 15000,
+      description:
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
+      people: 1,
+      maxPeople: 6,
+    },
+  },
+  {
+    userInfo: {
+      userIdx: 1,
+      userName: '심정욱',
+      userImg: new Picture(1, man, 30, 30),
+      address: '중랑구 신내2동',
+    },
+    itemInfo: {
+      itemIdx: 6,
+      thumbnail: new Picture(2, showerball, 100, 100),
+      itemPictures: [
+        new Picture(2, showerball, 100, 100),
+        new Picture(3, macbook, 100, 100),
+      ],
+      title: '샤워볼 개당 2천원에 나눔합니다',
+      uploadTime: '방금 전',
+      price: 15000,
+      description:
+        '안녕하세요~ 샤워볼 너무 많이 사버려서.. 혹시 2천원에 가져가실분 계시면 말씀주세요.',
       people: 1,
       maxPeople: 6,
     },

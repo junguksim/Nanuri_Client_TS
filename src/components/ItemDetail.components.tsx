@@ -40,11 +40,8 @@ const ItemDetail: React.FC<any> = ({ route }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Swiper
-        style={styles.swiper}
-        height={240}
-        onMomentumScrollEnd={(e, state, context) =>
-          console.log('index:', state.index)
-        }
+        loop={true}
+        showsButtons={false}
         dot={
           <View
             style={{
@@ -73,12 +70,7 @@ const ItemDetail: React.FC<any> = ({ route }) => {
             }}
           />
         }
-        paginationStyle={{
-          bottom: -23,
-          left: null,
-          right: 10,
-        }}
-        loop
+        paginationStyle={{ bottom: -23, left: 0, right: 10 }}
       >
         <View style={styles.slide}>
           <Image style={styles.picture} source={itemPictures[0]}></Image>
@@ -189,11 +181,12 @@ const styles = StyleSheet.create({
     flex: 8,
   },
   description: {
-    fontSize: 100,
+    fontSize: 15,
   },
   footer: {
-    flex: 1.5,
-    margin: -20,
+    flex: 1,
+    margin: -5,
+    paddingTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 35,
