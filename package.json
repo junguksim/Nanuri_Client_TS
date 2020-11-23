@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^1.9.2",
     "@react-navigation/bottom-tabs": "^5.10.0",
     "@react-navigation/native": "^5.8.0",
     "@types/react-native-snap-carousel": "^3.8.2",
@@ -55,6 +56,11 @@
       "jsx",
       "json",
       "node"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts"
     ]
   }
 }
