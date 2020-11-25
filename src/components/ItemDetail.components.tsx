@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
+import { CustomText } from '../modules/texts/CustomText';
+import { CustomBoldText } from '../modules/texts/CustomBoldText';
 
 const win = Dimensions.get('window');
 const ratio = win.width / 541; //541 is actual image width
@@ -85,23 +87,21 @@ const ItemDetail: React.FC<any> = ({ route }) => {
             <Image source={userImg} style={styles.userImg}></Image>
           </View>
           <View style={styles.userInfoContainer}>
-            <Text style={styles.userName}>{userName}</Text>
-            <Text>{`${address}`}</Text>
+            <CustomText>{userName}</CustomText>
+            <CustomText>{`${address}`}</CustomText>
           </View>
         </View>
         <View style={styles.titleView}>
-          <Text style={styles.title}>{title}</Text>
+          <CustomText>{title}</CustomText>
         </View>
         <View style={styles.descriptionView}>
           <ScrollView>
-            <Text style={styles.description}>{description}</Text>
+            <CustomText>{description}</CustomText>
           </ScrollView>
         </View>
         <View style={styles.footer}>
           <View style={styles.priceAndPeopleView}>
-            <Text
-              style={styles.priceAndPeople}
-            >{`${price}원 \n ${people} \/ ${maxPeople} 명`}</Text>
+            <CustomText>{`${price}원 \n ${people} \/ ${maxPeople} 명`}</CustomText>
           </View>
           <View style={styles.chatView}>
             <Button

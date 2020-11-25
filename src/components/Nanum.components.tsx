@@ -15,7 +15,7 @@ import { ItemProps } from '../interfaces/Item.interface';
 import ItemDetail from './ItemDetail.components';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Picture } from '../classes/Picture.class';
-import { CustomText } from '../modules/CustomText';
+import { CustomText } from '../modules/texts/CustomText';
 
 const showerball =
   'https://contents.lotteon.com/itemimage/_v031714/LM/88/06/37/99/98/57/1_/00/1/LM8806379998571_001_1.jpg/dims/resizef/824X824';

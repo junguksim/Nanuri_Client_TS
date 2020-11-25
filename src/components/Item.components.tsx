@@ -10,6 +10,8 @@ import {
   View,
 } from 'react-native';
 import { ItemProps } from '../interfaces/Item.interface';
+import { CustomText } from '../modules/texts/CustomText';
+import { CustomBoldText } from '../modules/texts/CustomBoldText';
 
 const Item: React.FC<ItemProps> = (props) => {
   let {
@@ -30,12 +32,9 @@ const Item: React.FC<ItemProps> = (props) => {
     <View style={styles.item}>
       <Image source={thumbnail} style={styles.picture}></Image>
       <View style={styles.content}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.address}>
-          {address} {' / '}
-          {uploadTime}
-        </Text>
-        <Text style={styles.price}>{price + ' 원'}</Text>
+        <CustomBoldText>{title}</CustomBoldText>
+        <CustomText>{`${address} / ${uploadTime}`}</CustomText>
+        <CustomText>{price + ' 원'}</CustomText>
       </View>
       <View style={styles.blank}></View>
     </View>
@@ -63,17 +62,8 @@ let styles = StyleSheet.create({
   content: {
     flex: 2,
     padding: 10,
-    marginLeft: 20,
-  },
-  title: {
-    marginBottom: 5,
-    fontFamily: 'NanumGothic-ExtraBold',
-  },
-  address: {
-    marginBottom: 5,
-  },
-  price: {
-    marginBottom: 5,
+    marginLeft: 25,
+    justifyContent: 'center',
   },
   blank: {
     flex: 1,

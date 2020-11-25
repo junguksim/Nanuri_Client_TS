@@ -12,8 +12,12 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { Picture } from '../classes/Picture.class';
-import { CustomText } from '../modules/CustomText';
-import { Picker } from '@react-native-picker/picker';
+import { CustomText } from '../modules/texts/CustomText';
+import { CustomBoldText } from '../modules/texts/CustomBoldText';
+import { CustomHeaderText } from '../modules/texts/CustomHeaderText';
+import { createStackNavigator } from '@react-navigation/stack';
+import AddItemCompleteScreen from './AddItemCompleteScreen.components';
+import SwitchSelector from 'react-native-switch-selector';
 
 const showerball =
   'https://contents.lotteon.com/itemimage/_v031714/LM/88/06/37/99/98/57/1_/00/1/LM8806379998571_001_1.jpg/dims/resizef/824X824';
@@ -26,12 +30,18 @@ const imagePickerOptions = {
     path: 'images',
   },
 };
+const SwitchSelectorOptions = [
+  { label: '나눔', value: '나눔' },
+  { label: '공동구매', value: '공동구매' },
+];
 
-const addItem: React.FC<any> = function (props) {
+const AddItemScreen: React.FC<any> = function (props) {
   const [itemPictureIdx, setItemPictureIdx] = useState<number>(0);
   const [itemPictureArray, addItemPicture] = useState<Picture[]>([]);
   const [title, setTitle] = useState<string>('제목');
-  const [category, setCategory] = useState<ReactText>('나눔');
+  const [category, setCategory] = useState<string>('나눔');
+  const [price, setPrice] = useState<number>(0);
+  const [description, setDescription] = useState<string>('');
   const AddImage: React.FC<any> = function (props) {
     const renderAddImage = (result: { item: Picture }) => {
       return (
@@ -52,7 +62,7 @@ const addItem: React.FC<any> = function (props) {
     return (
       <View style={props.style}>
         <Pressable onPress={showImagePicker} style={styles.addImageButton}>
-          <Text>사진추가</Text>
+          <CustomBoldText>사진추가</CustomBoldText>
         </Pressable>
         <FlatList
           data={itemPictureArray}
@@ -83,17 +93,21 @@ const addItem: React.FC<any> = function (props) {
       }
     });
   };
-
+  const { navigate } = props.navigation;
+  const goAddItemCompleteScreen = () => {
+    return navigate('물품등록완료');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTitle}>
-          <CustomText>글쓰기</CustomText>
+          <CustomHeaderText>물품등록</CustomHeaderText>
         </View>
         <Pressable
           onPress={() => {
-            Alert.alert('완료 버튼', 'pressed');
+            goAddItemCompleteScreen();
           }}
+          style={styles.addItemCompletePressable}
         >
           <CustomText>완료</CustomText>
         </Pressable>
@@ -102,31 +116,74 @@ const addItem: React.FC<any> = function (props) {
         <AddImage style={styles.addImageFlatList}></AddImage>
         <TextInput
           style={styles.titleInput}
-          placeholder={title}
-          value={title}
+          placeholder={'제목'}
           onChangeText={(title) => setTitle(title)}
         ></TextInput>
-        <Picker
-          selectedValue={category}
+        <SwitchSelector
+          initial={0}
+          onPress={(value) => {
+            setCategory(value.toString());
+          }}
+          options={SwitchSelectorOptions}
           style={styles.categoryPicker}
-          onValueChange={(categoryValue) => {
-            setCategory(categoryValue);
-          }}
-          itemStyle={{
-            fontSize: 24,
-            fontFamily: 'NanumBarunGothic',
-          }}
-        >
-          <Picker.Item label="나눔" value="나눔" />
-          <Picker.Item label="공동구매" value="공동구매" />
-        </Picker>
+        />
         <TextInput
-          style={styles.titleInput}
-          placeholder={title}
-          onChangeText={(title) => setTitle(title)}
+          style={styles.priceInput}
+          placeholder={'가격'}
+          onChangeText={(changedPrice) => setPrice(Number(changedPrice))}
+        ></TextInput>
+        <TextInput
+          style={styles.descriptionInput}
+          placeholder={'설명'}
+          onChangeText={(changedDescription) => setTitle(changedDescription)}
         ></TextInput>
       </View>
     </SafeAreaView>
+  );
+};
+const Stack = createStackNavigator();
+const AddItemHeader: React.FC<any> = function (props) {
+  return (
+    <View style={styles.header}>
+      <View style={styles.headerTitle}>
+        <CustomHeaderText>물품등록</CustomHeaderText>
+      </View>
+      <Pressable
+        onPress={() => {
+          Alert.alert('완료 버튼', 'pressed');
+        }}
+        style={({ pressed }) => [
+          {
+            flex: 0.5,
+            borderLeftWidth: 1,
+            borderColor: '#F2F2F2',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 20,
+            backgroundColor: pressed ? 'rgb(210, 210, 210)' : 'white',
+          },
+        ]}
+      >
+        <CustomText>완료</CustomText>
+      </Pressable>
+    </View>
+  );
+};
+
+const AddItem: React.FC<any> = function (props) {
+  return (
+    <Stack.Navigator initialRouteName="물품등록하기">
+      <Stack.Screen
+        name="물품등록"
+        component={AddItemScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="물품등록완료"
+        component={AddItemCompleteScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 };
 
@@ -135,23 +192,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
-    padding: 20,
+    backgroundColor: 'white',
   },
   header: {
-    flex: 0.5,
+    flex: 0.7,
     flexDirection: 'row',
     marginBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: '#F2F2F2',
   },
   headerTitle: {
     flex: 5,
-    marginLeft: 100,
     fontWeight: 'bold',
+    marginLeft: 15,
+    justifyContent: 'center',
   },
   headerFinishButton: {
     flex: 1,
   },
   content: {
     flex: 8,
+    paddingHorizontal: 20,
   },
   item: {
     padding: 10,
@@ -164,31 +225,50 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 5,
+    borderWidth: 1,
+    borderColor: '#F2F2F2',
   },
   addImageFlatList: {
     borderTopWidth: 1,
     height: 100,
     flexDirection: 'row',
     alignSelf: 'stretch',
+    borderColor: '#F2F2F2',
   },
   titleInput: {
     flex: 1,
     borderTopWidth: 1,
-    fontSize: 24,
-    borderBottomWidth: 1,
+    fontSize: 18,
+    borderColor: '#F2F2F2',
+  },
+  priceInput: {
+    flex: 1,
+    borderTopWidth: 1,
+    fontSize: 18,
+    borderColor: '#F2F2F2',
+  },
+  descriptionInput: {
+    flex: 5,
+    borderTopWidth: 1,
+    fontSize: 18,
+    borderColor: '#F2F2F2',
   },
   customText: {
     color: 'red',
-    fontSize: 24,
+    fontSize: 18,
   },
   categoryPicker: {
-    flex: 1,
+    flex: 1.8,
+    borderTopWidth: 1,
+    alignItems: 'center',
+    borderColor: '#F2F2F2',
   },
-  categoryPickerItem: {
-    fontSize: 24,
-    fontFamily: 'NanumBarunGothic',
+  addItemCompletePressable: {
+    borderLeftWidth: 1,
+    borderColor: '#F2F2F2',
+    justifyContent: 'center',
+    padding: 20,
   },
 });
 
-export default addItem;
+export default AddItem;
