@@ -8,5 +8,6 @@ export const CustomText = (props: { children: string }) => (
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'NanumBarunGothic',
+    fontSize: 15,
   },
 });

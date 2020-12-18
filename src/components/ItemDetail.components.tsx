@@ -11,7 +11,7 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
 import { CustomText } from '../modules/texts/CustomText';
 import { CustomBoldText } from '../modules/texts/CustomBoldText';
@@ -104,12 +104,13 @@ const ItemDetail: React.FC<any> = ({ route }) => {
             <CustomText>{`${price}원 \n ${people} \/ ${maxPeople} 명`}</CustomText>
           </View>
           <View style={styles.chatView}>
-            <Button
-              title={'채팅하기'}
-              onPress={() => {
-                Alert.alert('채팅하기!', '개발해야겟다헤헤');
-              }}
-            ></Button>
+            <TouchableHighlight
+              style={styles.chatButton}
+              onPress={() => Alert.alert('hi', '채팅')}
+              underlayColor="#fff"
+            >
+              <CustomText>채팅하기</CustomText>
+            </TouchableHighlight>
           </View>
         </View>
       </View>
@@ -121,9 +122,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
+    backgroundColor: 'white',
   },
   swiper: {
     flex: 1,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
   slide: {
     flex: 1,
@@ -138,6 +142,11 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     flexDirection: 'row',
+    paddingTop: 15,
+    borderBottomWidth: 1,
+    paddingBottom: 15,
+    marginTop: 5,
+    borderColor: '#F2F2F2',
   },
   userImageContainer: {
     flex: 1,
@@ -168,10 +177,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
   picture: {
     flex: 1,
     width: win.width,
@@ -179,6 +184,7 @@ const styles = StyleSheet.create({
   },
   descriptionView: {
     flex: 8,
+    paddingTop: 15,
   },
   description: {
     fontSize: 15,
@@ -191,6 +197,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 35,
     flexDirection: 'row',
+    borderTopWidth: 1,
+    marginTop: 5,
+    borderColor: 'rgba(158, 150, 150, .3)',
   },
   priceAndPeople: {
     fontSize: 15,
@@ -201,6 +210,15 @@ const styles = StyleSheet.create({
   },
   chatView: {
     flex: 1,
+  },
+  chatButton: {
+    backgroundColor: 'rgb(100, 242, 127)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    paddingTop: 15,
+    paddingBottom: 15,
+    alignItems: 'center',
   },
 });
 
